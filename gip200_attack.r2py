@@ -1,0 +1,15 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+assert('SE' == myfile.readat(None,0))
+
+myfile.writeat("SeeifIcanbreakthisE",0)
+
+# I should still get 'SE' because the file wasn't closed.
+assert('SE' == myfile.readat(None,0))
+
+#Close the file
+myfile.close()
